@@ -1,0 +1,87 @@
+body{
+  margin: 0px;
+  font-family: Quicksand;
+  padding-top: 80px;
+}
+body::selection {
+  background: rgb(0, 0, 0);
+}
+#topBar{
+  height: 80px;
+  width: 100vw;
+  background-color: rgba(150, 40, 250, 1);
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(110, 0, 210, 1);
+  text-align: left;
+  position: fixed;
+  top: 0px;
+  z-index: 1;
+  cursor: pointer;
+  user-select: none;
+}
+#title{
+  color: white;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 25px 0px 0px 0px;
+  margin-left: 25px;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  display: inline-block;
+}
+#topBar:hover #title{
+  letter-spacing: 2.5px;
+}
+#topBar:hover{
+  filter: brightness(95%);
+}
+.titleLabel{
+  padding-left: 40px;
+  animation: titleSlide 1s;
+}
+@keyframes titleSlide {
+  0%{padding-left: 0px;}
+}
+.back{
+  position: absolute;
+  transition: 0.3s;
+  padding-left: 0px;
+  animation: backSlide 1s;
+  transform: translateX(0px);
+}
+@keyframes backSlide {
+  0%{transform: translateX(-40px);}
+}
+.topBar:hover .back{
+  transform: rotate(-360deg);
+}
+.rantContainer{
+  max-width: 980px;
+  text-align: center;
+  margin: 0px 50px;
+  min-width: 500px;
+}
+::selection{
+  background: rgba(150, 40, 250, 0.8);
+  color: white;
+  border-radius: 10px;
+}
+@media only screen and (min-width: 1080px) {
+  .rantContainer{
+    margin-left: calc(50vw - 490px);
+  }
+}
+.rantTitle{
+  margin: 30px 0px 20px 0px;
+  font-size: 30px;
+  color: rgba(150, 40, 250, 1);
+  padding-bottom: 15px;
+  text-align: left;
+  border-bottom: 4px solid rgba(150, 40, 250, 1);
+}
+.rantContent{
+  color: rgba(150, 40, 250, 1);
+  text-align: left;
+  text-indent: 25px;
+}
