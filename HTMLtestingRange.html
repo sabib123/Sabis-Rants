@@ -1,63 +1,115 @@
-<html><head><style>body{margin:0px;text-align:center;font-family:Poppins;}input{margin-top:22px;border-style:solid;border-width:2px;border-color:rgb(70,70,70);padding:10px;color:rgb(70,70,70);font-size:11px;}input:focus{outline:none;}button:focus{outline:none;}button{background-color:rgb(255,255,255);border-style:solid;border-style:solid;border-width:2px;border-color:rgb(70,70,70);color:rgb(70,70,70);border-left-style:hidden;border-radius:0px;font-size:11px;padding:10px;}.title{color:rgb(70,70,70);text-decoration:underline;margin-top:30vh;}button:hover{background-color:rgb(70,70,70);color:rgb(255,255,255);cursor:pointer;}</style><link href="https://fonts.googleapis.com/css?family=Poppins&display=swap"rel="stylesheet"><script>
-function decode(){
-  var passwordValidation = 1;
-  for(i=0;i<document.getElementById("inputPassword").value.length;i++){
-    if(!(1 == 0)){
-      passwordValidation = 0;
+<html>
+  <head>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand&amp;display=swap" rel="stylesheet">
+  <style>
+    body{
+      background-color: black;
+      color: white;
+      font-family: Quicksand;
     }
-  }
-  alert(charSet)
-  alert(charSet.indexOf(document.getElementById("inputPassword").value.charAt(0)))
-  return passwordValidation;
-}
-function checkPassword(){
-  if(decode()){
-    alert("Correct");}else if(0 == 1){alert("Incorrect");}
-}
-function genCharArray(charA, charZ){var a=[],i=charA.charCodeAt(0),j=charZ.charCodeAt(0);for(;i<=j;++i){a.push(String.fromCharCode(i));}return a;}var charSet = genCharArray('a', 'z');charSet.push(genCharArray('0','9'));charSet.push("?","@","!");</script></head><body><div class="title">HTML JavaScript Hack 1</div><input type="password"placeholder="Password"maxlength="24"id="inputPassword"><button onclick="checkPassword()">Enter</button></body></html>
-
-<!--------------------------------E N D-------------------------------------->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--d1bt23t9jf14t0bc20j4
-    e2cu34u?kg25u1cd31k5 + 1
-    g4ew56w!mh47w3ef53m7 + 3
-
-charSet.indexOf(document.getElementById("inputPassword").value.charAt(i))+1
-charSet.indexOf("e2cu34u?kg25u1cd31k5".charAt(i))
-
--->
+    input{
+      background-color: rgba(255, 0, 0, 0);
+      border: rgb(240, 240, 240) solid 2px;
+      border-radius: 5px 0px 0px 5px;
+      padding: 10px;
+      color: rgb(240, 240, 240);
+      font-family: Quicksand;
+    }
+    input:focus{
+      outline: none;
+    }
+    button{
+      background-color: rgba(255, 0, 0, 0);
+      border: rgb(240, 240, 240) solid 2px;
+      border-left: hidden;
+      border-radius: 0px 5px 5px 0px;
+      padding: 10px;
+      color: rgb(240, 240, 240);
+      font-family: Quicksand;
+      cursor: pointer;
+    }
+    button:hover{
+      background-color: rgba(240, 240, 240, 1);
+      color: rgb(0, 0, 0);
+    }
+    button:focus{
+      outline: none;
+    }
+  </style>
+  <script>
+    var transactionTotal;
+    function totalUpdate(){
+      transactionTotal = document.getElementById("total").value;
+    }
+    function vfyInptValue(a){
+      var charAll = ["0","1","2","3","4","5","6","7","8","9","."];
+      var decAlert = 0;
+      var decCount = 0;
+      var decCToggle = 0;
+      var mnyInpt = document.getElementById("mnyInpt").value;
+      for(i=0;i<mnyInpt.length;i++){
+        if(!(charAll.includes(mnyInpt.charAt(i))) || ((decAlert == 1) && (mnyInpt.charAt(i) == "."))){
+          document.getElementById("mnyInpt").value = mnyInpt.substring(0, (mnyInpt.length - 1));
+        }else{
+          if(decCToggle == 1){
+            decCount = decCount + 1;
+            if(decCount > 2){
+              decCount = decCount - 1;
+              document.getElementById("mnyInpt").value = mnyInpt.substring(0, (mnyInpt.length - 1));
+            }
+          }
+        }
+        if((decAlert == 0) && (mnyInpt.charAt(i) == ".")){
+          decAlert = 1;
+          decCToggle = 1;
+        }
+      }
+    }
+    function pay(){
+      var paidAmount = document.getElementById("mnyInpt").value;
+      var returnValues = [10000,5000,2000,1000,500,100,25,10,5,1];
+      var remainderAmount = (((paidAmount * 1000) - (transactionTotal * 1000)) / 10);
+      var changeUnits = [];
+      for(i=0;i<returnValues.length;i++){
+        changeUnits.push("0");
+      }
+      if((paidAmount * 100) >= (transactionTotal * 100)){
+        for(i=0;i<returnValues.length;i++){
+          if(remainderAmount >= returnValues[i]){
+            changeUnits[i] = (Math.floor(remainderAmount / returnValues[i]));
+            remainderAmount = remainderAmount - ((Math.floor(remainderAmount / returnValues[i])) * returnValues[i]);
+          }
+        }
+      }else{
+        alert("Not Enough");
+      }
+      delTempDisplay();
+      var p = document.createElement('p');
+      p.className = "tempDisplay";
+      p.innerHTML = "Change Due: $" + ((Math.round((paidAmount - transactionTotal) * 100)) / 100);
+      document.body.appendChild(p);
+      for(i=0;i<returnValues.length;i++){
+        var p = document.createElement('p');
+        if(i < 6){
+          p.innerHTML = "$" + (returnValues[i] / 100) + ": " + changeUnits[i];
+        }else{
+          p.innerHTML = (returnValues[i]) + "&#162;: " + changeUnits[i];
+        }
+        p.className = "tempDisplay";
+        document.body.appendChild(p);
+      }
+    }
+    function delTempDisplay(){
+      var tempDisplay = document.getElementsByClassName('tempDisplay');
+      while(tempDisplay[0]) {
+        tempDisplay[0].parentNode.removeChild(tempDisplay[0]);
+      }
+    }
+  </script>
+  </head>
+  <body>
+    Total: $ <input type="text" oninput="totalUpdate();delTempDisplay();" id="total" style="border-radius: 5px;"><br><br>
+    Tendered: $ <input type="text" oninput="vfyInptValue();delTempDisplay();" id="mnyInpt"><button onclick="pay()">Pay</button>
+    <div id="chngDue"></div>
+  </body>
+</html>
