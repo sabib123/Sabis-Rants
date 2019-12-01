@@ -1,0 +1,192 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Calistoga|Poppins|Lobster&display=swap" rel="stylesheet">
+    <style>
+      body{
+        margin: 0px;
+        user-select: none;
+        min-width: 750px;
+      }
+      #body{
+        width: 100%;
+        min-width: 750px;
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      #pageHeaderContainer{
+        background-image: linear-gradient(-205deg, rgb(100, 255, 135), rgb(100, 185, 235));
+        height: 50%;
+        width: 100%;
+        color: white;
+        font-family: Lobster;
+        font-size: 100px;
+        text-shadow: 0px 0px 10px rgb(0, 135, 85);
+        text-align: center;
+        min-height: 450px;
+      }
+      #pageHeader{
+        padding-top: 10vh;
+        margin: 0px;
+      }
+      #pageDescription{
+        font-size: 36px;
+        padding: 0px 50px;
+        max-width: 900px;
+        font-family: Lobster;
+      }
+      @media only screen and (min-width: 1000px) {
+        #pageDescription {
+          margin-left: calc(50% - 500px);
+        }
+      }
+      .rantContainerHeader{
+        margin-left: 50px;
+        width: calc(100% - 200px);
+        color: white;
+        font-family: Lobster;
+        font-size: 60px;
+        text-shadow: 0px 0px 50px rgb(150, 150, 150);
+        border-radius: 6px;
+        padding: 10px 50px 10px 50px;
+        margin-bottom: 0px;
+        background-image: linear-gradient(-205deg, #FB7BA2, #FCE043);
+      }
+      .indivRantContainer{
+        color: rgb(50, 50, 50);
+        font-family: Calistoga;
+        margin-left: 50px;
+        width: calc(100% - 119px);
+        border-left: solid rgba(0, 0, 0, 0) 2px;
+        padding-left: 17px;
+        font-family: Poppins;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .indivRantContainer:hover{
+        border-left: solid #FB7BA2 2px;
+        width: calc(100% - 127px);
+        padding-left: 25px;
+      }
+      .indivRantContainer h4{
+        font-size: 22px;
+      }
+      .indivRantContainer p{
+        padding-left: 25px;
+      }
+      #allRntBtn{
+        background-image: linear-gradient(25deg, #A88BEB, #F8CEEC);
+        margin-left: 50px;
+        color: white;
+        font-family: Lobster;
+        font-size: 60px;
+        text-shadow: 0px 0px 50px rgb(150, 150, 150);
+        border-radius: 6px;
+        margin-bottom: 25px;
+        border: hidden;
+        padding: 10px 20px;
+        box-shadow: 0px 0px 20px rgb(150, 150, 150);
+        margin-top: 25px;
+        cursor: pointer;
+      }
+      #allRntBtn:hover{
+        background-image: linear-gradient(25deg, #A88BEB, #F8CEEC);
+        box-shadow: 0px 0px 20px rgb(75, 75, 75);
+      }
+      :focus{
+        outline: none;
+      }
+    </style>
+    <script>
+    var titles = ['Sun', 'Convenience Stores', 'Sand', 'Buffets', 'Road Trips', 'Love', 'S\'mores', "Spoons"];
+    var favs = [1, 3, 4];
+    var descs = [
+      '"-your dreams of going to art school is dumb a waste of money."',
+      '"-well, they sell honey buns in bulk for seventy-five cents."',
+      '"That’s God\'s way of keeping us fleshy humans in check."',
+      '"-eight pounds of sausage you foolishly believed was vegan."',
+      '"- eaten on a bench next to a five hundred pound trucker..."',
+      '"- like conjoined twins, when one leaves, one or both die."',
+      '"-like the Great Depression was right around the corner."',
+      '"-used by Paul Bunyun to carve out the Grand Canyon for freedom."',
+    ];
+    var urls = [
+      'sun.html',
+      'convenience_stores.html',
+      'sand.html',
+      'buffets.html',
+      'road_trips.html',
+      'love.html',
+      'smores.html',
+      'spoons.html'
+    ];
+    window.onload = function(){
+      for (var i = 0; i < 3; i++){ // Recent Excerpts
+        var rCont = document.createElement('div');
+        rCont.className = 'indivRantContainer';
+        rCont.id = 'recentRant' + i;
+        rCont.onclick = function() {
+          linkClick(urls[i]);
+        };
+        var rantTitle = document.createElement('h4');
+        rantTitle.innerHTML = titles[titles.length - i - 1];
+        var rantDesc = document.createElement('p');
+        rantDesc.innerHTML = descs[descs.length - i - 1];
+        document.getElementById("recentRantContainer").appendChild(rCont);
+        document.getElementById("recentRant" + i).appendChild(rantTitle);
+        document.getElementById("recentRant" + i).appendChild(rantDesc);
+      }
+      for (var i = 0; i < 3; i++){ // Fav Excerpts
+        var rCont = document.createElement('div');
+        rCont.className = 'indivRantContainer';
+        rCont.id = 'favRant' + i;
+        var rantTitle = document.createElement('h4');
+        rantTitle.innerHTML = titles[favs[i]];
+        var rantDesc = document.createElement('p');
+        rantDesc.innerHTML = descs[favs[i]];
+        document.getElementById("favRantContainer").appendChild(rCont);
+        document.getElementById("favRant" + i).appendChild(rantTitle);
+        document.getElementById("favRant" + i).appendChild(rantDesc);
+      }
+    }
+    function showAll(){
+      document.getElementById("favRantContainer").parentNode.removeChild(document.getElementById("favRantContainer"));
+      document.getElementById("recentRantContainer").innerHTML = "<p class='rantContainerHeader' id='recentRantHeader'>Recent Excerpts</p>";
+      document.getElementById("allRntBtn").parentNode.removeChild(document.getElementById("allRntBtn"));
+      document.getElementById("recentRantHeader").innerHTML = 'All Rants';
+      for (var i = 0; i < descs.length; i++){
+        var rCont = document.createElement('div');
+        rCont.className = 'indivRantContainer';
+        rCont.id = 'favRant' + i;
+        var rantTitle = document.createElement('h4');
+        rantTitle.innerHTML = titles[i];
+        var rantDesc = document.createElement('p');
+        rantDesc.innerHTML = descs[i];
+        document.getElementById("allRantContainer").appendChild(rCont);
+        document.getElementById("favRant" + i).appendChild(rantTitle);
+        document.getElementById("favRant" + i).appendChild(rantDesc);
+      }
+      window.scrollTo(0, 0);
+    }
+    function linkClick(link){
+      window.location.href = link;
+    }
+    </script>
+  </head>
+  <body>
+    <div id="body">
+      <div id="pageHeaderContainer">
+        <p id="pageHeader">Sabi's Rants</p>
+        <p id="pageDescription">-  Handcrafted shorts that say what needs to be said.</p>
+      </div>
+      <div id="recentRantContainer">
+        <p class="rantContainerHeader" id="recentRantHeader">Recent Excerpts</p>
+      </div>
+      <div id="favRantContainer">
+        <p class="rantContainerHeader">Favorite Rants</p>
+      </div>
+      <button id="allRntBtn" onclick="showAll()">View All Rants</button>
+      <div id="allRantContainer"></div>
+    </div>
+  </body>
+</html>
