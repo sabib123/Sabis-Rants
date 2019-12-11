@@ -1,156 +1,192 @@
 <html>
   <head>
-    <title>Sabi's Rants</title>
-    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Calistoga|Poppins|Lobster&display=swap" rel="stylesheet">
     <style>
       body{
         margin: 0px;
-        font-family: Quicksand;
         user-select: none;
+        min-width: 750px;
       }
-      body::selection {
-        background: rgb(0, 0, 0);
-      }
-      #topBar{
-        height: 80px;
-        width: 100vw;
-        background-color: rgba(150, 40, 250, 1);
-        overflow: hidden;
-        box-shadow: 0px 0px 10px rgba(110, 0, 210, 1);
-        text-align: left;
-        position: fixed;
-        top: 0px;
-        z-index: 1;
-      }
-      @keyframes rise {
-        0%{transform: translateY(10%);opacity: 0;}
-      }
-      #title{
-        color: white;
-        font-size: 30px;
-        line-height: 30px;
-        padding: 25px 0px 0px 0px;
-        margin-left: 25px;
-        white-space: nowrap;
-        letter-spacing: 1px;
-        transition: 0.3s;
-        animation: slide 1s;
-      }
-      @keyframes slide {
-        0%{letter-spacing: 2.5px;padding-left: 40px;}
-      }
-      .rantContainer{
-        margin: 80px 0px 0px 0px;
-        padding: 0px;
-        max-width: 1180px;
-        overflow: hidden;
-      }
-      @media only screen and (min-width: 1180px) {
-        .rantContainer{
-          margin-left: calc(50vw - 590px);
-        }
-      }
-      @media only screen and (max-width: 1179px) {
-        .rantContainer{
-          text-align: center;
-        }
-      }
-      .rant{
-        transform: perspective(1px) translateZ(0);
-        transition-duration: 0.3s;
-        color: rgba(150, 40, 250, 1);
-        font-weight: 400;
-        border: solid 4px rgba(150, 40, 250, 1);
-        width: 350px;
-        height: 150px;
-        margin: 20px;
-        background-color: white;
-        cursor: pointer;
-        font-family: Quicksand;
-        overflow: hidden;
-        box-shadow: 0px 0px 10px rgba(110, 0, 210, 1);
-        animation: rise 1s;
-      }
-      .rant:focus{
-        outline: 0;
-      }
-      .rant:before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(150, 40, 250, 1);
-        transform: scaleY(0);
-        transform-origin: 50% 100%;
-        transition-property: transform;
-        transition-duration: 0.3s;
-      }
-      .rant:hover:before{
-        transform: scaleY(1);
-      }
-      .rantTitle{
-        font-size: 25px;
-        transition-duration: 0.3s;
-      }
-      .rant:hover .rantTitle{
-        margin-bottom: 35px;
-        color: white;
-      }
-      .rantThumb{
-        position: absolute;
-        top: 100px;
-        padding: 0px 15px;
-        font-size: 15px;
-        transition-duration: 0.3s;
-        color: white;
-        opacity: 0;
-      }
-      .rant:hover .rantThumb{
-        top: 80px;
-        opacity: 1;
+      #body{
+        width: 100%;
+        min-width: 750px;
       }
       ::-webkit-scrollbar {
         display: none;
       }
+      #pageHeaderContainer{
+        background-image: linear-gradient(-205deg, rgb(100, 255, 135), rgb(100, 185, 235));
+        height: 50%;
+        width: 100%;
+        color: white;
+        font-family: Lobster;
+        font-size: 100px;
+        text-shadow: 0px 0px 10px rgb(0, 135, 85);
+        text-align: center;
+        min-height: 450px;
+      }
+      #pageHeader{
+        padding-top: 10vh;
+        margin: 0px;
+      }
+      #pageDescription{
+        font-size: 36px;
+        padding: 0px 50px;
+        max-width: 900px;
+        font-family: Lobster;
+      }
+      @media only screen and (min-width: 1000px) {
+        #pageDescription {
+          margin-left: calc(50% - 500px);
+        }
+      }
+      .rantContainerHeader{
+        margin-left: 50px;
+        width: calc(100% - 200px);
+        color: white;
+        font-family: Lobster;
+        font-size: 60px;
+        text-shadow: 0px 0px 50px rgb(150, 150, 150);
+        border-radius: 6px;
+        padding: 10px 50px 10px 50px;
+        margin-bottom: 0px;
+        background-image: linear-gradient(-205deg, #FB7BA2, #FCE043);
+      }
+      .indivRantContainer{
+        color: rgb(50, 50, 50);
+        font-family: Calistoga;
+        margin-left: 50px;
+        width: calc(100% - 119px);
+        border-left: solid rgba(0, 0, 0, 0) 2px;
+        padding-left: 17px;
+        font-family: Poppins;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .indivRantContainer:hover{
+        border-left: solid #FB7BA2 2px;
+        width: calc(100% - 127px);
+        padding-left: 25px;
+      }
+      .indivRantContainer h4{
+        font-size: 22px;
+      }
+      .indivRantContainer p{
+        padding-left: 25px;
+      }
+      #allRntBtn{
+        background-image: linear-gradient(25deg, #A88BEB, #F8CEEC);
+        margin-left: 50px;
+        color: white;
+        font-family: Lobster;
+        font-size: 60px;
+        text-shadow: 0px 0px 50px rgb(150, 150, 150);
+        border-radius: 6px;
+        margin-bottom: 25px;
+        border: hidden;
+        padding: 10px 20px;
+        box-shadow: 0px 0px 20px rgb(150, 150, 150);
+        margin-top: 25px;
+        cursor: pointer;
+      }
+      #allRntBtn:hover{
+        background-image: linear-gradient(25deg, #A88BEB, #F8CEEC);
+        box-shadow: 0px 0px 20px rgb(75, 75, 75);
+      }
+      :focus{
+        outline: none;
+      }
     </style>
+    <script>
+      var titles = ['Sun', 'Convenience Stores', 'Sand', 'Buffets', 'Road Trips', 'Love', 'S\'mores', "Spoons"];
+      var favs = [1, 3, 4];
+      var descs = [
+        '"-your dreams of going to art school is dumb a waste of money."',
+        '"-well, they sell honey buns in bulk for seventy-five cents."',
+        '"That’s God\'s way of keeping us fleshy humans in check."',
+        '"-eight pounds of sausage you foolishly believed was vegan."',
+        '"- eaten on a bench next to a five hundred pound trucker..."',
+        '"- like conjoined twins, when one leaves, one or both die."',
+        '"-like the Great Depression was right around the corner."',
+        '"-used by Paul Bunyun to carve out the Grand Canyon for freedom."',
+      ];
+      var urls = [
+        'sun.html',
+        'convenience_stores.html',
+        'sand.html',
+        'buffets.html',
+        'road_trips.html',
+        'love.html',
+        'smores.html',
+        'spoons.html'
+      ];
+      window.onload = function(){
+        for (var i = 0; i < 3; i++){ // Recent Excerpts
+          var rCont = document.createElement('div');
+          rCont.className = 'indivRantContainer';
+          rCont.id = 'recentRant' + i;
+          rCont.onclick = function() {
+            linkClick(urls[i]);
+          };
+          var rantTitle = document.createElement('h4');
+          rantTitle.innerHTML = titles[titles.length - i - 1];
+          var rantDesc = document.createElement('p');
+          rantDesc.innerHTML = descs[descs.length - i - 1];
+          document.getElementById("recentRantContainer").appendChild(rCont);
+          document.getElementById("recentRant" + i).appendChild(rantTitle);
+          document.getElementById("recentRant" + i).appendChild(rantDesc);
+        }
+        for (var i = 0; i < 3; i++){ // Fav Excerpts
+          var rCont = document.createElement('div');
+          rCont.className = 'indivRantContainer';
+          rCont.id = 'favRant' + i;
+          var rantTitle = document.createElement('h4');
+          rantTitle.innerHTML = titles[favs[i]];
+          var rantDesc = document.createElement('p');
+          rantDesc.innerHTML = descs[favs[i]];
+          document.getElementById("favRantContainer").appendChild(rCont);
+          document.getElementById("favRant" + i).appendChild(rantTitle);
+          document.getElementById("favRant" + i).appendChild(rantDesc);
+        }
+      }
+      function showAll(){
+        document.getElementById("favRantContainer").parentNode.removeChild(document.getElementById("favRantContainer"));
+        document.getElementById("recentRantContainer").innerHTML = "<p class='rantContainerHeader' id='recentRantHeader'>Recent Excerpts</p>";
+        document.getElementById("allRntBtn").parentNode.removeChild(document.getElementById("allRntBtn"));
+        document.getElementById("recentRantHeader").innerHTML = 'All Rants';
+        for (var i = 0; i < descs.length; i++){
+          var rCont = document.createElement('div');
+          rCont.className = 'indivRantContainer';
+          rCont.id = 'favRant' + i;
+          var rantTitle = document.createElement('h4');
+          rantTitle.innerHTML = titles[i];
+          var rantDesc = document.createElement('p');
+          rantDesc.innerHTML = descs[i];
+          document.getElementById("allRantContainer").appendChild(rCont);
+          document.getElementById("favRant" + i).appendChild(rantTitle);
+          document.getElementById("favRant" + i).appendChild(rantDesc);
+        }
+        window.scrollTo(0, window.innerHeight);
+      }
+      function linkClick(link){
+        window.location.href = link;
+      }
+    </script>
   </head>
   <body>
-    <div class="topBar" id="topBar">
-      <div class="title" id="title">Sabi's Rants</div>
-    </div>
-    <div class="rantContainer">
-    <a href="sun.html"><button class="rant">
-        <div class="rantTitle">Sun</div>
-        <div class="rantThumb">"-your dreams of going to art school is dumb a waste of money."</div>
-      </button></a>
-      <a href="convenient_stores.html"><button class="rant">
-        <div class="rantTitle">Convenient Stores</div>
-        <div class="rantThumb">"-well, they sell honey buns in bulk for seventy-five cents."</div>
-      </button></a>
-      <a href="buffets.html"><button class="rant">
-        <div class="rantTitle">Buffets</div>
-        <div class="rantThumb">"-eight pounds of sausage you foolishly believed was vegan."</div>
-      </button></a>
-      <a href="sand.html"><button class="rant">
-        <div class="rantTitle">Sand</div>
-        <div class="rantThumb">"That’s God's way of keeping us fleshy humans in check."</div>
-      </button></a>
-      <a href="road_trips.html"><button class="rant">
-        <div class="rantTitle">Road Trips</div>
-        <div class="rantThumb">"- eaten on a bench next to a five hundred pound trucker..."</div>
-      </button></a>
-      <a href="love.html"><button class="rant">
-        <div class="rantTitle">Love</div>
-        <div class="rantThumb">"- like conjoined twins, when one leaves, one or both die."</div>
-      </button></a>
-      <a href="smores.html"><button class="rant">
-        <div class="rantTitle">S'mores</div>
-        <div class="rantThumb">"-like the Great Depression was right around the corner."</div>
-      </button></a>
-      <a href="spoons.html"><button class="rant">
-        <div class="rantTitle">Spoons</div>
-        <div class="rantThumb">"-used by Paul Bunyun to carve out the Grand Canyon for freedom."</div>
-      </button></a>
+    <div id="body">
+      <div id="pageHeaderContainer">
+        <p id="pageHeader">Sabi's Rants</p>
+        <p id="pageDescription">-  Handcrafted shorts that say what needs to be said.</p>
+      </div>
+      <div id="recentRantContainer">
+        <p class="rantContainerHeader" id="recentRantHeader">Recent Excerpts</p>
+      </div>
+      <div id="favRantContainer">
+        <p class="rantContainerHeader">Favorite Rants</p>
+      </div>
+      <button id="allRntBtn" onclick="showAll()">View All Rants</button>
+      <div id="allRantContainer"></div>
     </div>
   </body>
 </html>
