@@ -135,7 +135,7 @@
           rLink.className = 'rLink';
           rLink.id = 'rRecentLink' + i;
           rLink.onclick = function() {
-            window.location = "" + adresses[adresses.length - i - 1] + "";
+            window.location = adresses[titles.length - i - 1];
           };
           var rTitle = document.createElement('h2');
           rTitle.innerHTML = titles[titles.length - i - 1];
