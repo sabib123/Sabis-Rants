@@ -119,7 +119,7 @@
         '"-like the Great Depression was right around the corner."',
         '"-used by Paul Bunyun to carve out the Grand Canyon for freedom."',
       ];
-      var adresses = [
+      var adr = [
         'sun.html',
         'convenience_stores.html',
         'sand.html',
@@ -135,7 +135,7 @@
           rLink.className = 'rLink';
           rLink.id = 'rRecentLink' + i;
           rLink.onclick = function() {
-            window.location = adresses[titles.length - i - 1];
+            window.location = adr[adr.length - i - 1];
           };
           var rTitle = document.createElement('h2');
           rTitle.innerHTML = titles[titles.length - i - 1];
