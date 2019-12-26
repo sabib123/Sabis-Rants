@@ -135,7 +135,7 @@
           rLink.className = 'rLink';
           rLink.id = 'rRecentLink' + i;
           rLink.onclick = function() {
-            linkClick(urls[i]);
+            linkClick(urls[urls.length - i - 1]);
           };
           var rTitle = document.createElement('h2');
           rTitle.innerHTML = titles[titles.length - i - 1];
