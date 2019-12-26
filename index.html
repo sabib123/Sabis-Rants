@@ -119,7 +119,7 @@
         '"-like the Great Depression was right around the corner."',
         '"-used by Paul Bunyun to carve out the Grand Canyon for freedom."',
       ];
-      var urls = [
+      var adr = [
         'sun.html',
         'convenience_stores.html',
         'sand.html',
@@ -134,9 +134,7 @@
           var rLink = document.createElement('div');
           rLink.className = 'rLink';
           rLink.id = 'rRecentLink' + i;
-          rLink.onclick = function() {
-            linkClick(urls[i]);
-          };
+          rLink.onclick = function() {window.location = adr[adr.length - i - 1];}
           var rTitle = document.createElement('h2');
           rTitle.innerHTML = titles[titles.length - i - 1];
           var rDesc = document.createElement('p');
@@ -149,6 +147,7 @@
           var rLink = document.createElement('div');
           rLink.className = 'rLink';
           rLink.id = 'rFavLink' + i;
+          rLink.onclick = function() {window.location = adr[favs[i]];}
           var rTitle = document.createElement('h2');
           rTitle.innerHTML = titles[favs[i]];
           var rDesc = document.createElement('p');
@@ -162,6 +161,7 @@
           var rLink = document.createElement('div');
           rLink.className = 'rLink';
           rLink.id = 'rLink' + i;
+          rLink.onclick = function() {window.location = adr[i];}
           var rTitle = document.createElement('h2');
           rTitle.innerHTML = titles[i];
           var rDesc = document.createElement('p');
@@ -171,9 +171,6 @@
           document.getElementById("rLink" + i).appendChild(rTitle);
           document.getElementById("rLink" + i).appendChild(rDesc);
         }
-      }
-      function linkClick(link){
-        window.location.href = link;
       }
     </script>
   </head>
@@ -187,7 +184,7 @@
       <div id="rRecentContainer" class="rContainer"></div>
       <div class="rHeader" style="background-image: linear-gradient(-205deg, #FB7BA2, #FFB063);">Favorite Excerpts</div>
       <div id="rFavoriteContainer" class="rContainer"></div>
-      <div class="rHeader" style="background-image: linear-gradient(-205deg, #fccb90, #d57eeb);">Favorite Excerpts</div>
+      <div class="rHeader" style="background-image: linear-gradient(-205deg, #fccb90, #d57eeb);">All Rants</div>
       <div id="rContainer" class="rContainer"></div>
     </div>
   </body>
