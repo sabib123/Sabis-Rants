@@ -134,15 +134,15 @@
           var rLink = document.createElement('div');
           rLink.className = 'rLink';
           rLink.id = 'rRecentLink' + i;
-          var rLinkA = document.createElement('a');
-          rLinkA.id = "rLinkA" + i;
-          rLinkA.href = adr[adr.length - i - 1];
+          var rLinkRA = document.createElement('a');
+          rLinkRA.id = "rLinkRA" + i;
+          rLinkRA.href = adr[adr.length - i - 1];
           var rTitle = document.createElement('h2');
           rTitle.innerHTML = titles[titles.length - i - 1];
           var rDesc = document.createElement('p');
           rDesc.innerHTML = descs[descs.length - i - 1];
-          document.getElementById("rRecentContainer").appendChild(rLinkA);
-          document.getElementById("rLinkA" + i).appendChild(rLink);
+          document.getElementById("rRecentContainer").appendChild(rLinkRA);
+          document.getElementById("rLinkRA" + i).appendChild(rLink);
           document.getElementById("rRecentLink" + i).appendChild(rTitle);
           document.getElementById("rRecentLink" + i).appendChild(rDesc);
         }
@@ -150,12 +150,16 @@
           var rLink = document.createElement('div');
           rLink.className = 'rLink';
           rLink.id = 'rFavLink' + i;
+          var rLinkFA = document.createElement('a');
+          rLinkFA.id = "rLinkFA" + i;
+          rLinkFA.href = adr[favs[i]];
           var rTitle = document.createElement('h2');
           rTitle.innerHTML = titles[favs[i]];
+          rTitle.style.backgroundImage = "linear-gradient(-205deg, #FB8BA2, #FFA053)";
           var rDesc = document.createElement('p');
           rDesc.innerHTML = descs[favs[i]];
-          document.getElementById("rFavoriteContainer").appendChild(rLink);
-          rTitle.style.backgroundImage = "linear-gradient(-205deg, #FB8BA2, #FFA053)";
+          document.getElementById("rFavoriteContainer").appendChild(rLinkFA);
+          document.getElementById("rLinkFA" + i).appendChild(rLink);
           document.getElementById("rFavLink" + i).appendChild(rTitle);
           document.getElementById("rFavLink" + i).appendChild(rDesc);
         }
@@ -163,12 +167,16 @@
           var rLink = document.createElement('div');
           rLink.className = 'rLink';
           rLink.id = 'rLink' + i;
+          var rLinkAA = document.createElement('a');
+          rLinkAA.id = "rLinkAA" + i;
+          rLinkAA.href = adr[i];
           var rTitle = document.createElement('h2');
           rTitle.innerHTML = titles[i];
+          rTitle.style.backgroundImage = "linear-gradient(-205deg, #fccb90, #d57eeb)";
           var rDesc = document.createElement('p');
           rDesc.innerHTML = descs[i];
-          document.getElementById("rContainer").appendChild(rLink);
-          rTitle.style.backgroundImage = "linear-gradient(-205deg, #fccb90, #d57eeb)";
+          document.getElementById("rContainer").appendChild(rLinkAA);
+          document.getElementById("rLinkAA" + i).appendChild(rLink);
           document.getElementById("rLink" + i).appendChild(rTitle);
           document.getElementById("rLink" + i).appendChild(rDesc);
         }
