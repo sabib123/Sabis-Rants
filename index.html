@@ -134,12 +134,15 @@
           var rLink = document.createElement('div');
           rLink.className = 'rLink';
           rLink.id = 'rRecentLink' + i;
-          rLink.onclick = function() {window.location = adr[adr.length - i - 1];}
+          var rLinkA = document.createElement('a');
+          rLinkA.id = "rLinkA" + i;
+          rLinkA.href = adr[adr.length - i - 1];
           var rTitle = document.createElement('h2');
           rTitle.innerHTML = titles[titles.length - i - 1];
           var rDesc = document.createElement('p');
           rDesc.innerHTML = descs[descs.length - i - 1];
-          document.getElementById("rRecentContainer").appendChild(rLink);
+          document.getElementById("rRecentContainer").appendChild(rLinkA);
+          document.getElementById("rLinkA" + i).appendChild(rLink);
           document.getElementById("rRecentLink" + i).appendChild(rTitle);
           document.getElementById("rRecentLink" + i).appendChild(rDesc);
         }
@@ -147,7 +150,6 @@
           var rLink = document.createElement('div');
           rLink.className = 'rLink';
           rLink.id = 'rFavLink' + i;
-          rLink.onclick = function() {window.location = adr[favs[i]];}
           var rTitle = document.createElement('h2');
           rTitle.innerHTML = titles[favs[i]];
           var rDesc = document.createElement('p');
@@ -157,11 +159,10 @@
           document.getElementById("rFavLink" + i).appendChild(rTitle);
           document.getElementById("rFavLink" + i).appendChild(rDesc);
         }
-        for (var i = 0; i < urls.length; i++){
+        for (var i = 0; i < adr.length; i++){
           var rLink = document.createElement('div');
           rLink.className = 'rLink';
           rLink.id = 'rLink' + i;
-          rLink.onclick = function() {window.location = adr[i];}
           var rTitle = document.createElement('h2');
           rTitle.innerHTML = titles[i];
           var rDesc = document.createElement('p');
